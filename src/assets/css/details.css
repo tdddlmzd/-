@@ -1,0 +1,314 @@
+.details {
+  /* padding-top: 20px; */
+  background: #fff;
+  padding-bottom: 20px;
+}
+body {
+  background: #f1f6f8;
+}
+.from-box {
+  overflow: hidden;
+  margin-top: 20px;
+}
+.from-box label.txt {
+  display: block;
+  margin-bottom: 10px;
+  color: #a5b4c0;
+}
+.from-box input::-webkit-input-placeholder {
+  color: #43637c;
+}
+.from-box .input:-moz-placeholder {
+  color: #43637c;
+}
+.from-box .input:-ms-input-placeholder {
+  color: #43637c;
+}
+.from-box .from-box-1 {
+  float: left;
+  display: block;
+  margin-right: 18px;
+}
+.from-box .from-box-2 {
+  float: left;
+  display: block;
+  margin-left: 18px;
+}
+.from-box .fob-input {
+  position: relative;
+  width: 319px;
+  height: 41px;
+  background: #fff;
+  line-height: 41px;
+  border: 1px solid #ececec;
+  border-radius: 6px;
+}
+.from-box .ipt-box {
+  font-size: 18px;
+  margin-left: 30px;
+  height: 38px;
+  line-height: 38px;
+  border: none;
+  width: 285px;
+  border-radius: 6px;
+}
+.from-box .origin {
+  color: #ff9808;
+  font-size: 20px;
+}
+.from-box .Destination {
+  color: #0983f8;
+  font-size: 20px;
+}
+.from-box .el-input__icon {
+  font-size: 20px;
+}
+.from-box .input__prefix {
+  position: absolute;
+  top: -2px;
+  left: 5px;
+  height: 100%;
+  text-align: center;
+}
+.from-box .el-date-editor.el-input,
+.from-box .el-date-editor.el-input__inner {
+  width: 200px;
+}
+.from-box .el-input__inner {
+  border: 1px solid #ececec;
+  border-radius: 6px;
+}
+.from-box .icon-wangfan-1 {
+  float: left;
+  color: #95abbe;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 35px 15px 0 0px;
+}
+.from-box .date-radio {
+  float: left;
+  width: 50px;
+  padding-top: 20px;
+}
+.from-box .date-radio .el-radio {
+  margin-right: 0;
+  font-size: 14px;
+  margin-top: 6px;
+}
+.from-box .searchBtn {
+  width: 180px;
+  height: 41px;
+  background: #ff9500;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+  margin-top: 25px;
+}
+.de-content {
+  margin-top: 20px;
+}
+.de-content .con-header {
+  height: 110px;
+  background: #02b2ff;
+  padding: 15px;
+  color: #fff;
+  font-size: 14px;
+}
+.de-content .shipper p {
+  margin-top: 20px;
+  padding-left: 6px;
+}
+.de-content .shipper ul {
+  clear: both;
+  overflow: hidden;
+}
+.de-content .shipper ul > li {
+  width: 41px;
+  float: left;
+  position: relative;
+  margin-right: -10px;
+}
+.de-content .shipper ul > li img {
+  border-radius: 100%;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.17);
+  border: 1px solid lightblue;
+}
+.de-content .shipper ul > li:first-child {
+  z-index: 99;
+}
+.de-content .shipper ul > li:nth-child(2) {
+  z-index: 98;
+}
+.de-content .shipper ul > li:nth-child(3) {
+  z-index: 97;
+}
+.de-content .shipper ul > li:nth-child(4) {
+  z-index: 96;
+}
+.de-content .shipper ul > li:nth-child(5) {
+  z-index: 95;
+}
+.de-content .shipper ul > li:nth-child(7) {
+  z-index: 94;
+}
+.de-content .voyage {
+  padding-top: 64px;
+  text-align: right;
+}
+.de-content .ship-main {
+  background: #fff;
+  padding: 30px 15px 0 15px;
+  font-size: 18px;
+  text-align: center;
+  height: 188px;
+}
+.de-content .ship-main .Origin-txt h5 {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+.de-content .ship-main .Origin-txt p {
+  margin-bottom: 15px;
+}
+.de-content .ship-main .arrow {
+  background: url("../images/arrow.png") center no-repeat;
+  width: 160px;
+  height: 20px;
+  margin-top: 23px;
+  padding-top: 60px;
+}
+.ship-main-direct {
+  background: #fff;
+  font-size: 18px;
+  text-align: center;
+  height: 239px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center ;
+}
+.ship-main-direct .Origin-txt h5 {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+.ship-main-direct .Origin-txt p {
+  margin-bottom: 15px;
+  height: 24px;
+}
+.ship-main-direct .direct-list div {
+  float: left;
+  font-size: 22px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* width: 100px; */
+}
+.ship-main-direct .direct-list-img {
+  padding: 0 15px;
+}
+.ship-main-direct .bottom {
+  margin-top: 30px;
+}
+.data-table {
+  font-size: 14px;
+  line-height: 40px;
+  padding: 15px;
+  background: #fff;
+  overflow: hidden;
+}
+.data-table p {
+  text-align: center;
+}
+.data-table .data-th {
+  height: 40px;
+  /* border-bottom: 1px solid #f7f7f7; */
+}
+.data-table .data-td {
+  height: 40px;
+}
+.data-table a.btn {
+  display: block;
+  width: 80px;
+  line-height: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background: #ff9500;
+  color: #fff;
+  margin: 5px auto 0 auto;
+}
+.declare {
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-size: 14px;
+  /* background: #fff url("../images/declareBg.jpg") left top no-repeat; */
+  overflow: hidden;
+  padding-bottom: 15px;
+  border-top: 2px solid #02b2ff;
+}
+.declare h5 {
+  padding: 15px;
+  font-size: 14px;
+  color: #a3b8cc;
+}
+.declare p {
+  color: #a3b8cc;
+  padding: 0 15px;
+  line-height: 30px;
+}
+.declare dl {
+  line-height: 30px;
+  clear: both;
+  padding: 0 15px;
+  height: 100%;
+}
+.declare dt {
+  float: left;
+}
+.declare dd {
+  float: left;
+}
+.declare dd a {
+  color: #a1b2c3;
+  margin-right: 1em;
+  display: block;
+  float: left;
+}
+.declare dd.longer {
+  width: 1100px ;
+}
+.tab-box {
+  margin-top: 20px;
+  overflow: hidden;
+}
+.tab-box .icon-RectangleCopy {
+  font-size: 26px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.tab-box ul > li {
+  float: left;
+  padding: 15px 30px 12px 30px;
+  font-size: 18px;
+  max-height: 53px;
+  cursor: pointer;
+}
+.tab-box li.active {
+  color: #02b2ff;
+  border-top: 2px solid #02b2ff;
+  background: #fff;
+}
+
+.max-transit{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100px;
+}
+
+.max-transit-polpod{
+  max-width: 200px;
+}
+
+

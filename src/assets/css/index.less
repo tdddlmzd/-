@@ -1,0 +1,158 @@
+@maxWidth: 1200px;
+@txtWhite:#fff;
+@txtBlue:#02b2ff;
+@txtBlueDeep:#43637c;
+
+.borderRadius(@radius:6px){ border-radius:@radius;}
+
+.moveDown {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    z-index: 999;
+}    
+.fob-banner {
+    position: relative;
+    min-width: @maxWidth;
+    .banner-main {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        text-align: center;
+        user-select: none;
+        -webkit-user-select: none;
+        height: 596px;
+        .banner-wrapper {
+            position: relative;
+            ul li {
+                height: 596px;
+            }
+            .banner_txt{ width: 100%;
+                text-align: center;
+                margin: 0px auto;
+                position: absolute;
+                top: 150px;
+                z-index: 99;
+                color: #fff;
+                h1{font-size: 60px; 
+                    margin-bottom: 18px;
+                    letter-spacing:0.3em;
+                    
+                }
+                p{font-size: 20px;}
+            }
+            .searchBox-main{
+                position: absolute;
+                top: 358px;
+                width: 100%;
+                text-align: center;
+                z-index: 100;
+                color:#43637c;
+                input::-webkit-input-placeholder {
+                    color:#43637c;
+                    
+                }
+                .input:-moz-placeholder {
+                    color:#43637c;
+                   
+                }
+                .input:-ms-input-placeholder {
+                    color:#43637c;
+                }
+                .portname{ text-align: left; color: #a5b4c0; padding-left: .5em }
+                .searchBox{
+                    width: 867px;
+                    height: 69px;
+                    background: #fff;
+                    .borderRadius(6px);
+                    margin: 0 auto;
+                }
+                .searchBtn{
+                    width: 200px;
+                    height: 54px;
+                    background: #ff9500;
+                    .borderRadius(6px);
+                    color: #fff;
+                    font-size: 20px;
+                    text-align: center;
+                    border: none;
+                    margin-top: 53px
+                }
+                .port{ width: 275px; float: left;
+                    padding: 13px 0px  0 15px;
+                   
+                }
+                .origin{ color: #ff9808; font-size: 20px;}
+                .Destination{color:#0983f8;font-size: 20px;}
+                .icon-wangfan-1{ float: left; color: #95abbe;font-size: 24px; margin-top: 25px; font-weight: 700; }
+                .ipt-box{ width: 230px; height: 40px; line-height: 40px; border: none;font-size: 18px;}
+                .dateBox{
+                    border-left: 1px solid #cccccc;
+                    float: left;
+                    text-align: left;
+                    width: 208px;
+                    height: 100%;
+                    padding: 13px 0 0 10px;
+                    .dateBoxIpt {
+                        float: left;
+                        .el-date-editor.el-input{
+                        width: 166px;
+                        float: left;
+                    }
+                    .el-input__inner{ border: none; color: #43637c;}
+                    .el-input__icon{ font-size: 20px;}
+                }
+                
+                }
+                .date-radio{
+                    float: left; width: 50px;
+                    padding-top: 6px;
+                   
+                    .el-radio{ margin-right: 0;
+                     font-size: 14px; 
+                     margin-top: 10px;
+                    }
+                }
+                .el-radio__input.is-checked+.el-radio__label{ color:@txtBlueDeep ;}
+                .el-radio__input.is-checked .el-radio__inner {
+                    border-color:@txtBlueDeep;
+                    background:@txtBlueDeep;
+                }
+            }
+            
+            .index_banner_1{
+                background-image: url('../images/banner.jpg');
+                background-position: center 0px;
+                background-repeat: no-repeat;
+                background-size: cover;
+                }
+        }
+        
+    }
+   
+}
+.superiority{ margin-top: 30px;
+    .superiority-box{
+    background:url("../images/tabbg.png") no-repeat;
+    width: 290px;
+    height: 316px;
+    text-align: center;
+    img{ margin: 78px auto 30px auto;}
+    h3{ font-size: 20px; font-weight: 500;}
+}}
+.partners{
+    margin-top: 100px;text-align: center;
+    h1{font-size: 32px;font-weight: 500;}
+    h2{font-size: 26px; margin-top: 20px;font-weight: 500; margin-bottom: 66px;}
+    .logo-box{
+        background: #fff;
+        width: 182px;
+        height: 81px;
+        margin-bottom: 22px;
+        box-shadow:0px 2px 11px 0px rgba(0,0,0,0.17);
+        img{ width: 100%}
+    }
+}
+

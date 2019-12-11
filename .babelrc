@@ -1,0 +1,7 @@
+// 处理ie兼容问题
+{
+    "presets": ["@babel/preset-env"],
+    "plugins": [
+      "@babel/plugin-transform-runtime"
+    ]
+  }

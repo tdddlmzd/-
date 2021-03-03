@@ -22,12 +22,9 @@ export default {
 .loadingIcon {
   display: block;
   margin: 0 auto;
-
-  // stylelint-disable-next-line selector-class-pattern
   &:global(.v-enter-active) {
     transition: opacity 1s;
   }
-  // stylelint-disable-next-line selector-class-pattern
   &:global(.v-enter) {
     opacity: 0;
   }

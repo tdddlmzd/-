@@ -9,26 +9,42 @@
   text-align: center;
   user-select: none;
   -webkit-user-select: none;
-  height: 596px;
+  /* height: 1080px; */
+  /* background-image: url('../images/newbanner.png'); */
+  background-position: center 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .fob-banner .banner-main .banner-wrapper {
+  width: 100%;
+  height: 100%;
+  /* position: relative; */
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%); */
+}
+/* .newbanner{
   position: relative;
-}
-.fob-banner .banner-main .banner-wrapper ul li {
-  height: 596px;
-}
-.fob-banner .banner-main .banner-wrapper .banner_txt {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+} */
+/* .fob-banner .banner-main .banner-wrapper ul li {
+  height: 500px;
+} */
+/* .fob-banner .banner-main .banner-wrapper .banner_txt {
   width: 100%;
   text-align: center;
   margin: 0px auto;
   position: absolute;
-  top: 150px;
+  top: 300px;
   z-index: 99;
   color: #fff;
-}
+} */
 .fob-banner .banner-main .banner-wrapper .banner_txt h1 {
+  color: #fff;
   font-size: 60px;
-  margin-bottom: 18px;
+  margin-bottom: 38px;
   letter-spacing: 0.3em;
 }
 .fob-banner .banner-main .banner-wrapper .banner_txt p {
@@ -36,24 +52,26 @@
 }
 .fob-banner .banner-main .banner-wrapper .searchBox-main {
   position: absolute;
-  top: 358px;
-  width: 100%;
-  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 880px;
   z-index: 100;
-  color: #43637c;
+  color: #282828;
+  height: 350px;
 }
 .fob-banner .banner-main .banner-wrapper .searchBox-main input::-webkit-input-placeholder {
-  color: #43637c;
+  color: #282828;
 }
 .fob-banner .banner-main .banner-wrapper .searchBox-main .input:-moz-placeholder {
-  color: #43637c;
+  color: #282828;
 }
 .fob-banner .banner-main .banner-wrapper .searchBox-main .input:-ms-input-placeholder {
-  color: #43637c;
+  color: #282828;
 }
 .fob-banner .banner-main .banner-wrapper .searchBox-main .portname {
   text-align: left;
-  color: #a5b4c0;
+  color: #bebebe;
   padding-left: 1em;
 }
 .fob-banner .banner-main .banner-wrapper .searchBox-main .searchBox {
@@ -66,13 +84,13 @@
 .fob-banner .banner-main .banner-wrapper .searchBox-main .searchBtn {
   width: 200px;
   height: 54px;
-  background: #ff9500;
+  background-color: #072c4c;
   border-radius: 6px;
   color: #fff;
   font-size: 20px;
   text-align: center;
   border: none;
-  margin-top: 53px;
+  margin-top: 64px;
   cursor:pointer;
 }
 .fob-banner .banner-main .banner-wrapper .searchBox-main .port {
@@ -85,7 +103,7 @@
   font-size: 20px;
 }
 .fob-banner .banner-main .banner-wrapper .searchBox-main .Destination {
-  color: #0983f8;
+  color: #072c4c;
   font-size: 20px;
 }
 .fob-banner .banner-main .banner-wrapper .searchBox-main .icon-wangfan-1 {
@@ -119,13 +137,11 @@
 }
 .fob-banner .banner-main .banner-wrapper .searchBox-main .dateBox .dateBoxIpt .el-input__inner {
   border: none;
-  color: #43637c;
+  color: #282828;
   height: 39px;
   /* margin-top: 7%; */ 
 }
-.fob-banner .banner-main .banner-wrapper .searchBox-main .dateBox .dateBoxIpt .el-input__icon {
-  font-size: 20px;
-}
+
 .fob-banner .banner-main .banner-wrapper .searchBox-main .date-radio {
   float: left;
   width: 50px;
@@ -137,20 +153,20 @@
   margin-top: 10px;
 }
 .fob-banner .banner-main .banner-wrapper .searchBox-main .el-radio__input.is-checked + .el-radio__label {
-  color: #43637c;
+  color: #282828;
 }
 .fob-banner .banner-main .banner-wrapper .searchBox-main .el-radio__input.is-checked .el-radio__inner {
-  border-color: #43637c;
-  background: #43637c;
+  border-color: #282828;
+  background: #282828;
 }
 .fob-banner .banner-main .banner-wrapper .index_banner_1 {
-  background-image: url('../images/banner.jpg');
+  /* background-image: url('../images/newbanner.png');
   background-position: center 0px;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%; */
 }
 .superiority {
-  margin-top: 30px;
+  margin-top: 50px;
 }
 .superiority .superiority-box {
   background: url("../images/tabbg.png") no-repeat;
@@ -167,6 +183,7 @@
 }
 .partners {
   margin-top: 100px;
+  margin-bottom: 20px;
   text-align: center;
 }
 .partners h1 {
@@ -190,5 +207,19 @@
   width: 100%;
 }
 .fob-banner .banner-main .banner-wrapper .searchBox-main .searchBtn:hover{
- background-color: #e4882d;
+  background-color: #395670;
+}
+.messages_customClass{
+  width: 428px !important;
+  height: 158px !important;
+  border-radius: 4px !important;
+}
+.messages_customClass .el-message-box__title{
+  font-weight: 600;
+}
+.messages_customClass .el-message-box__content{
+  padding: 25px 10px 24px 10px !important;
+}
+.messages_customClass .el-message-box__headerbtn .el-message-box__close{
+  color: #909090;
 }

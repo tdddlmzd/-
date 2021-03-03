@@ -84,7 +84,6 @@
 <script>
 import {dropzone} from "@assets/libs/dropzone/dropzone.js" ;
 export default {
-  name: "FileUpload",
   components: {},
   data() {
     return {};

@@ -19,35 +19,60 @@ export default {
 <template>
   <Layout>
     <div class="download-template row justify-content-center">
-                    <div class="col-md-8 col-lg-6 col-xl-5" style="margin: 0 auto;">
-                        <div class="card">
-
-                            <div class="card-body p-4">
-
-                                <div class="error-ghost text-center">
-                                    <img src="@assets/images/error.svg" width="200" alt="error-image">
-                                </div>
-
-                                <div class="text-center">
-                                    <h3 class="mt-4 text-uppercase font-weight-bold">Page not found </h3>
-                                    <p class="text-muted mb-0 mt-3" style="line-height: 20px;">It's looking like you may have taken a wrong turn. Don't worry...
-                                        it happens to the best of us. You might want to check your internet connection.
-                                        Here's a little tip that might help you get back on track.</p>
-
-                                    <router-link tag="a" to="/" class="btn btn-primary mt-3"><i class="mdi mdi-reply mr-1"></i> Return Home</router-link>
-                                </div>
-
-                            </div> <!-- end card-body -->
-                        </div>
-                        <!-- end card -->
-
-                    </div> <!-- end col -->
-                </div>
+      <div class="card">
+        <div class="error-ghost text-center">
+            <img src="@assets/images/error.png" alt="error-image">
+        </div>
+        <div class="text-center">
+            <p class="text-prompt">{{$t('Oops, your page is missing')}}</p>
+            <router-link tag="a" to="/" class="button">
+              {{$t('login.back')}}
+            </router-link>
+        </div>
+      </div>
+    </div>
   </Layout>
 </template>
 
-<style lang="scss">
-.title {
-  text-align: center;
+<style lang="scss" scoped>
+.justify-content-center{
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  .card{
+    width: 465px;
+    margin: 70px auto 0 auto;
+    img{
+      width: 100%;
+      height: 203px;
+    }
+  }
+  .text-center{
+    text-align: center;
+    .text-prompt{
+      font-size: 24px;
+      line-height: 58px;
+      color: #282828;
+      letter-spacing: 3px;
+      margin: 0;
+    }
+    .button{
+      display: block;
+      margin: 0 auto;
+      width: 180px;
+      height: 48px;
+      background-color: #072c4c;
+      border-radius: 24px;
+      color: #fff;
+      font-size: 18px;
+      line-height: 46px;
+      letter-spacing: 2px;
+      padding-left: 6px;
+      box-sizing: border-box;
+    }
+  }
 }
 </style>

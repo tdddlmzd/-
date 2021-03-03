@@ -1,30 +1,30 @@
 Arguments: 
-  D:\NodeJs\node.exe C:\Users\360fob_03\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+  C:\Program Files\nodejs\node.exe C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add gulp
 
 PATH: 
-  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\NodeJs\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_191\bin;C:\Program Files\Java\jdk1.8.0_191\jre\bin;C:\Python27;C:\Program Files\TortoiseGit\bin;C:\Users\360fob_03\AppData\Local\Microsoft\WindowsApps;C:\Users\360fob_03\AppData\Roaming\npm;;D:\Microsoft VS Code\bin
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\NetSarang\Xftp 6\;C:\Program Files (x86)\NetSarang\Xshell 6\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\TortoiseSVN\bin;C:\Program Files\VisualSVN Server\bin;D:\Desktop\kafka-2.5.0-src\bin\windows;C:\Program Files\nodejs\;C:\Program Files\nodejs;C:\Windows\System32\cmd.exe;C:\Users\admin\AppData\Local\Microsoft\WindowsApps;;C:\Users\admin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\admin\AppData\Roaming\npm
 
 Yarn version: 
-  1.16.0
+  1.22.4
 
 Node version: 
-  10.15.0
+  12.18.0
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: ENOENT: no such file or directory, copyfile 'C:\Users\360fob_03\AppData\Local\Yarn\Cache\v4\npm-arr-diff-2.0.0-8f3b827f955a8bd669697e4a4256ac3ceae356cf\node_modules\arr-diff\LICENSE' -> 'C:\Users\360fob_03\Desktop\project ship schedule\node_modules\@babel\core\node_modules\arr-diff\LICENSE'
+  Error: EEXIST: file already exists, mkdir 'D:\Desktop\project\365edi\node_modules\css-loader\node_modules\@webassemblyjs'
 
 npm manifest: 
   {
-    "name": "minton-vue-vertical",
-    "version": "0.0.0",
+    "name": "365edi",
+    "version": "1.0.1",
     "private": true,
     "scripts": {
-      "dev": "vue-cli-service serve",
+      "dev": "vue-cli-service serve --max_old_space_size=6144",
       "dev:e2e": "cross-env VUE_APP_TEST=e2e vue-cli-service test:e2e --mode=development",
-       "build": "vue-cli-service build",
+      "build": "vue-cli-service build",
       "lint:stylelint": "stylelint --fix",
       "lint:markdownlint": "markdownlint",
       "lint:prettier": "prettier --write --loglevel warn",
@@ -40,7 +40,9 @@ npm manifest:
       "test": "run-s test:unit test:e2e",
       "test:ci": "run-s test:unit:ci test:e2e",
       "new": "hygen new",
-      "docs": "vuepress dev"
+      "docs": "vuepress dev",
+      "docker-build": "vue-cli-service build --mode production&&docker build -t registry.cn-hangzhou.aliyuncs.com/xfish/xdata-web:0.3.32 .",
+      "docker-push": " docker push registry.cn-hangzhou.aliyuncs.com/xfish/xdata-web:0.3.32"
     },
     "gitHooks": {
       "pre-commit": "cross-env PRE_COMMIT=true lint-staged"
@@ -52,16 +54,38 @@ npm manifest:
       "axios": "0.18.0",
       "bootstrap": "^4.3.1",
       "bootstrap-vue": "^2.0.0-rc.22",
+      "crypto-js": "^3.1.9-1",
+      "echarts": "^4.6.0",
       "element-ui": "^2.10.1",
+      "jquery": "^1.12.4",
+      "leaflet": "^1.6.0",
+      "leaflet-polylinedecorator": "^1.6.0",
+      "leaflet.motion": "^0.1.5",
       "lodash": "4.17.11",
       "metismenujs": "^1.0.3",
-      "vue": "^2.6.10",
+      "node-notifier": "^6.0.0",
+      "node-sass": "^4.13.1",
+      "nprogress": "^0.2.0",
+      "parsleyjs": "^2.9.1",
+      "sass-loader": "^7.1.0",
+      "sockjs-client": "^1.4.0",
+      "stompjs": "^2.3.3",
+      "v-viewer": "^1.4.2",
+      "vue": "^2.6.11",
+      "vue-baidu-map": "^0.21.22",
+      "vue-i18n": "^8.15.7",
       "vue-meta": "1.6.0",
       "vue-perfect-scrollbar": "^0.1.0",
       "vue-router": "3.0.6",
+      "vue2-leaflet": "^2.5.2",
+      "vue2-leaflet-polylinedecorator": "^2.0.1",
       "vuex": "3.1.0"
     },
     "devDependencies": {
+      "@babel/core": "^7.5.4",
+      "@babel/plugin-transform-runtime": "^7.5.0",
+      "@babel/preset-env": "^7.5.4",
+      "@intervolga/optimize-cssnano-plugin": "^1.0.6",
       "@vue/cli-plugin-babel": "3.7.x",
       "@vue/cli-plugin-e2e-cypress": "3.7.x",
       "@vue/cli-plugin-unit-jest": "3.7.x",
@@ -69,10 +93,16 @@ npm manifest:
       "@vue/test-utils": "1.0.0-beta.29",
       "babel-core": "7.0.0-bridge.0",
       "babel-jest": "23.6.x",
+      "babel-plugin-transform-remove-console": "^6.9.4",
+      "babel-polyfill": "^6.26.0",
+      "compression-webpack-plugin": "^3.1.0",
       "cross-env": "5.2.x",
+      "es6-promise": "^4.2.8",
       "express": "4.16.x",
       "hygen": "2.1.2",
+      "image-webpack-loader": "^5.0.0",
       "imagemin-lint-staged": "0.4.x",
+      "jquery": "^1.12.4",
       "lint-staged": "8.1.x",
       "markdownlint-cli": "0.15.x",
       "npm-run-all": "4.1.x",
@@ -84,8 +114,9 @@ npm manifest:
       "stylelint-config-recess-order": "2.0.x",
       "stylelint-config-standard": "18.3.x",
       "stylelint-scss": "3.6.x",
-      "vue-template-compiler": "2.6.10",
-      "vuepress": "0.14.x"
+      "vue-template-compiler": "2.6.11",
+      "vuepress": "0.14.x",
+      "webpack": "^4.35.3"
     },
     "engines": {
       "node": ">=10.13.3",

@@ -22,7 +22,9 @@ import Footer from "@components/Footer";
 import AccountSetting from "@components/AccountSetting";
 
 export default {
-  name: "Mine",
+  page: {
+    title: "账户设置",
+  },
   data() {
     return {
       contentType:'AccountSetting',

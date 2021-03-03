@@ -1,0 +1,59 @@
+{
+  // 船公司
+  carrierName: null,
+  // 航线代码
+  routeCode: null,
+  // 起始港
+  pol: null,
+  // 起始港五字码
+  polCode: null,
+  // 目的港
+  pod: null,
+  // 目的港五字码
+  podCode: null,
+  // 离港时间
+  etd: null,
+  // 到港时间
+  eta: null,
+  ships: [
+    {
+      // 船舶ID
+      shipId: null,
+      // 船舶名称
+      shipName: null,
+      // 船舶MMSI
+      mmsi: null,
+      // 出发时间
+      etd: null,
+      // 到达时间
+      eta: null,
+      // 船舶靠港计划
+      ports: [
+      {
+        // 港口名称
+        portName: null,
+        // 港口中文名
+        portNameCn: null,
+        // 港口五字码
+        portCode: null,
+        // 码头
+        terminal: null,
+        // 航程
+        duration: null,
+        // 到港时间
+        eta: null,
+        // 离港时间
+        etd: null,
+        // 上次到港时间
+        lastEta: null,
+        // 上次离港时间
+        lastEtd: null,
+        // 纬度
+        lat: null,
+        // 经度
+        lon: null
+        }
+      ]
+    }
+  ]
+}

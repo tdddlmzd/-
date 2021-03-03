@@ -6,8 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
   <meta content="Coderthemes" name="author" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!-- HTTP 1.1 -->
+  <meta http-equiv="pragma" content="no-cache">
+  <!-- HTTP 1.0 -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <!-- Prevent caching at the proxy server -->
+  <meta http-equiv="expires" content="0">
   <link rel="shortcut icon" href="<%= webpackConfig.output.publicPath %>favicon.ico" />
-  <title><%= webpackConfig.name %></title>
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=d1d01db3942a7eaab693786f9a6680cc"></script>
+  <!-- <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" /> -->
+  <!-- <title>鲸准船期-全球1800港口船期查询_船舶定位_货物跟踪</title>
+  <meta name="keywords" content="鲸准船期，船期查询，船期表，港航纵横，集运宝典，船公司货物跟踪，船舶定位，船舶计划">
+  <meta name="description" content="鲸准船期通过云计算和大数据技术，对实时全球船期、船舶定位和船公司货物跟踪数据进行挖掘和整合，为广大国际物流企业提升供应链可视化与智能化提供服务与支持!"> -->
 </head>
 
 <body>
@@ -15,7 +26,19 @@
   <div id="app"></div>
 
   <!-- Built files will be auto injected here. -->
-  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+  <!-- <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script> -->
+  <script>
+    var returnCitySN = { "cip": "220.181.108.105", "cid": "110000", "cname": "北京市" }
+  </script>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5e086af7f3f2c761ce7f91807f0724d4";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
 </body>
 
 </html>

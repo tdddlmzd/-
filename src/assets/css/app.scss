@@ -527,7 +527,7 @@ File: Main Css File
       font-size: 16px; }
 
   .nav-user {
-    padding: 0 12px !important; }
+    padding: 0 !important; }
     .nav-user img {
       height: 32px;
       width: 32px; }
@@ -1569,8 +1569,8 @@ File: Main Css File
     margin-top: -50px;
     margin-left: -50px;
     opacity: 0;
-    background: rgba(0, 0, 0, 0.2);
-    background: radial-gradient(rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.5) 60%, rgba(255, 255, 255, 0) 70%);
+    // background: rgba(0, 0, 0, 0.2);
+    // background: radial-gradient(rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.5) 60%, rgba(255, 255, 255, 0) 70%);
     -webkit-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
     -webkit-transition-property: -webkit-transform, opacity;
@@ -1580,17 +1580,21 @@ File: Main Css File
     transition-property: transform, opacity, -webkit-transform;
     -webkit-transform: scale(0) translate(0, 0);
     transform: scale(0) translate(0, 0);
-    pointer-events: none; }
+    pointer-events: none; 
+  }
 
   .waves-effect.waves-light .waves-ripple {
-    background: rgba(255, 255, 255, 0.4);
-    background: radial-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0) 70%); }
+    // background: rgba(255, 255, 255, 0.4);
+    // background: radial-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0) 70%); 
+  }
 
   .waves-effect.waves-classic .waves-ripple {
-    background: rgba(0, 0, 0, 0.2); }
+    // background: rgba(0, 0, 0, 0.2); 
+  }
 
   .waves-effect.waves-classic.waves-light .waves-ripple {
-    background: rgba(255, 255, 255, 0.4); }
+    // background: rgba(255, 255, 255, 0.4); 
+  }
 
   .waves-notransition {
     -webkit-transition: none !important;

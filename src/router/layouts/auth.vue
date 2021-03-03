@@ -6,7 +6,7 @@ export default {
 <template>
 <div>
   <div class="account-pages">
-    <div class="container">
+    <div class="container" style="min-width:100%">
       <slot />
     </div>
   </div>

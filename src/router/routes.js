@@ -4,14 +4,12 @@ import Mine from './views/Mine'
 import Notice from './views/Notice'
 
 export default [
+
+  //首页
   {
     path: '/',
     name: 'Home',
     component: resolve => require(['@views/Home'], resolve),
-    // meta: {
-    //   authRequired: true,
-    // },
-    // props: (route) => ({ user: store.state.auth.currentUser || {} }),
   },
   // {
   //   path: '/login',
@@ -30,47 +28,149 @@ export default [
   //     },
   //   },
   // },
+  //登录
   {
-    path: '/list/:pol/:polId/:pod/:podId/:start/:dateType/:t',
-    name: 'List',
-    component: resolve => require(['@views/List'], resolve)
+    path: '/Login',
+    name: 'Login',
+    component: resolve => require(['@components/Login'], resolve),
   },
+  //注册
   {
-    path: '/details/:pol/:polId/:pod/:podId/:vessel/:voyage/:dateType/:start/:id/:isTransit/:isGc/:startTime/:endTime',
+    path: '/Regist',
+    name: 'Regist',
+    component: resolve => require(['@components/Regist'], resolve),
+  },
+  //忘记密码
+  {
+    path: '/ForgetPassword',
+    name: 'ForgetPassword',
+    component: resolve => require(['@components/ForgetPassword'], resolve),
+  },
+  //手机验证码登陆
+  {
+    path: '/PhoneVerificationCodeLogin',
+    name: 'PhoneVerificationCodeLogin',
+    component: resolve => require(['@components/PhoneVerificationCodeLogin'], resolve),
+  },
+  //船期首页
+  {
+    path: '/route/record',
+    name: 'Route',
+    component: resolve => require(['@views/Route'], resolve),
+  },
+  
+  //船期列表
+  {
+    path: '/route/:POLPOD/:id',
+    name: 'List',
+    component: resolve => require(['@views/List'], resolve),
+  },
+  //船期详情
+  {
+    path: '/route-detail/:id',
     name: 'Details',
-    component: resolve => require(['@views/Details'], resolve)
+    component: resolve => require(['@views/Details'], resolve),
   },
   {
     path: '/mine',
     name: 'Mine',
     component: resolve => require(['@views/Mine'], resolve),
-    meta: {
-      beforeResolve(routeTo, routeFrom, next) {
-        var reg = new RegExp("(^| )currentUser=([^;]*)(;|$)");
-        if (document.cookie.match(reg)){
-          next();
-        } 
-        else {
-          next({ name: 'Home' })
-        }
-      },
-    },
   },
   {
     path: '/notice',
     name: 'Notice',
     component: resolve => require(['@views/Notice'], resolve),
-    meta: {
-      beforeResolve(routeTo, routeFrom, next) {
-        var reg = new RegExp("(^| )currentUser=([^;]*)(;|$)");
-        if (document.cookie.match(reg)){
-          next();
-        } 
-        else {
-          next({ name: 'Home' })
-        }
-      },
-    },
+  },
+  {
+    path: '/port-cnsha', //上海港区
+    name: 'portCnsha',
+    component: resolve => require(['@views/ShangHaiPort'], resolve),
+  },
+  {
+    path: '/port-cnsha-detail/:referenceno/:id', //上海港区详情页
+    name: 'portCnshaDetail',
+    component: resolve => require(['@views/TrackDetail'], resolve),
+  },
+  {
+    path: '/track', //跟踪
+    name: 'Track',
+    component: resolve => require(['@views/Tracking'], resolve),
+  },
+  {
+    path: '/track-detail/:referenceno/:id', //货物跟踪详情页
+    name: 'TrackDetail',
+    component: resolve => require(['@views/TrackDetail'], resolve),
+  },
+  {
+    path: '/shippingLine/:id', //航线
+    name: 'ShippingLine',
+    component: resolve => require(['@views/ShippingLine'], resolve),
+  },
+  {
+    path: '/truck', //集卡
+    name: 'setCards',
+    component: resolve => require(['@views/SetCards'], resolve),
+  },
+  {
+    path: '/truck/iframe/:basicAuth', //中交兴路
+    name: 'Truck',
+    component: resolve => require(['@views/Truck'], resolve),
+  },
+  {
+    path: '/truck/iframe/:basicAuth/:truckNo', //中交兴路
+    name: 'Truck',
+    component: resolve => require(['@views/Truck'], resolve),
+  },
+  // {
+  //   path: '/truck/iframe/:username/:password/:truckNo', //中交兴路
+  //   name: 'Truck',
+  //   component: resolve => require(['@views/Truck'], resolve),
+  // },
+
+  {
+    path: '/customer', //下载
+    name: 'Customer',
+    component: resolve => require(['@views/customer'], resolve),
+  },
+  {
+    path: '/downLoad', //下载
+    name: 'DownLoad',
+    component: resolve => require(['@views/DownLoad'], resolve),
+  },
+  {
+    path: '/console', //控制台
+    name: 'Console',
+    component: resolve => require(['@views/Console'], resolve),
+  },
+  {
+    path: '/vessel', //船舶定位
+    name: 'vessel',
+    component: resolve => require(['@views/Shipdt'], resolve),
+  },
+  {
+    path: '/vessel/iframe/:basicAuth/:shipparma', //船舶定位
+    name: 'vesselifream',
+    component: resolve => require(['@views/ShipIfream'], resolve),
+  },
+  {
+    path: '/vessel/iframe/:basicAuth', //船舶定位
+    name: 'vesselifream',
+    component: resolve => require(['@views/ShipIfream'], resolve),
+  },
+  {
+    path: '/introduction', //简介
+    name: 'Introduction',
+    component: resolve => require(['@views/Introduction'], resolve),
+  },
+  {
+    path: '/contactUs', //联系我们
+    name: 'ContactUs',
+    component: resolve => require(['@views/ContactUs'], resolve),
+  },
+  {
+    path: '/api', //API
+    name: 'API',
+    component: resolve => require(['@views/Dataser'], resolve),
   },
   // {
   //   path: '/register',

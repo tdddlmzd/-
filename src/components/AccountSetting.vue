@@ -42,7 +42,11 @@
   border-color: #1abc9c;
 }
 .download-template .rounded-circle {
-  cursor: pointer;
+  cursor: pointer
+}
+.download-template .img{
+  width: 96px !important;
+  height: 96px !important;
 }
 .col-md-12.card-des {
   margin-top: 10px;
@@ -88,10 +92,6 @@
 .img-review-box-modal .el-dialog__body {
   padding-bottom: 20px !important;
 }
-
-.download-template .img-fluid {
-  height: 236px;
-}
 .img-review-turn {
   font-size: 16px;
   cursor: pointer;
@@ -110,28 +110,27 @@
     right: 0;
     display: none;
   }
-  // .el-dialog__footer {
-  //   bottom: -605px;
-  //   position: absolute;
-  //   right: 45%;
-  // }
   .el-dialog__body {
-    // height: 520px;
-    // width: 860px;
     padding: 0 !important;
   }
+}
+.UpdatePassword{
+  min-height: 440px !important;
 }
 </style>
 <template>
   <!-- Start Content-->
+  <!-- 账号设置页面 -->
   <div class="download-template content">
     <div class="container-fluid">
       <div class="row">
+        <!-- 左侧认证信息部分 -->
         <div class="col-lg-4 col-xl-4">
           <div class="card-box text-center">
             <img
-              :src="userInfo.avatarUrl == '' ? require('../assets/images/default_user.jpg'):userInfo.avatarUrl"
-              class="rounded-circle avatar-xl img-thumbnail"
+              :src="userInfo.avatarUrl == '' ? require('../assets/images/l-headpor.png'):userInfo.avatarUrl"
+              class="rounded-circle avatar-xl img-thumbnail img"
+              :class="userInfo.avatarUrl == '' ? '' : 'padd-thumbnail'"
               alt="profile-image"
               @click="openSetAvatarModal"
             />
@@ -143,7 +142,7 @@
                 :class="userInfo.validState == 2 ?'company-validstated':'company-validstate'"
                 :style="userInfo.companyName == ''?'margin-left: -20px;':''"
                 @click="changeTab(1)"
-              >{{userInfo.validState == 0 ?'未认证':userInfo.validState == 2 ?'已认证':''}}</u>
+              >{{userInfo.validState == 0 ? $t('accountSettings.notCertified') :userInfo.validState == 2 ? $t('accountSettings.verified') :''}}</u>
             </p>
             <!-- <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">关注</button>
             <button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">私信</button>-->
@@ -152,17 +151,17 @@
               <!-- <h4 class="font-13 text-uppercase">关于我 :</h4>
               <p class="text-muted font-13 mb-3">{{userInfo.aboutMe}}</p>-->
               <p class="text-muted mb-2 font-13">
-                <strong>真实姓名 :</strong>
+                <strong>{{ $t('accountSettings.realName') }} :</strong>
                 <span class="ml-2">{{userInfo.fullname}}</span>
               </p>
 
               <p class="text-muted mb-2 font-13">
-                <strong>手机号码 :</strong>
-                <span class="ml-2">{{userInfo.phone}}</span>
+                <strong>{{ $t('accountSettings.phoneNumber') }} :</strong>
+                <span class="ml-2">{{userInfo.userMobile}}</span>
               </p>
 
               <p class="text-muted mb-2 font-13">
-                <strong>邮箱地址 :</strong>
+                <strong>{{ $t('accountSettings.email') }} :</strong>
                 <span class="ml-2">{{userInfo.email}}</span>
               </p>
 
@@ -201,10 +200,11 @@
           <!-- end card-box -->
         </div>
         <!-- end col-->
-
+        <!-- 右侧详细信息部分 -->
         <div class="col-lg-8 col-xl-8">
           <div class="card-box">
             <ul class="nav nav-pills navtab-bg">
+              <!-- 基本信息 -->
               <li class="nav-item" @click="changeTab(0)">
                 <a
                   href="javascript: void(0);"
@@ -212,9 +212,11 @@
                   aria-expanded="false"
                   class="base-info nav-link active btn-success waves-effect waves-light"
                 >
-                  <i class="mdi mdi-settings-outline mr-1"></i>基本信息
+                  <i class="mdi mdi-settings-outline mr-1"></i>
+                  {{ $t('accountSettings.basicInformation') }}
                 </a>
               </li>
+              <!-- 实名认证 -->
               <li class="nav-item" @click="changeTab(1)">
                 <a
                   href="javascript: void(0);"
@@ -222,38 +224,43 @@
                   aria-expanded="true"
                   class="realname-valid nav-link ml-0 waves-effect waves-light"
                 >
-                  <i class="mdi mdi-face-profile mr-1"></i>实名认证
+                  <i class="mdi mdi-face-profile mr-1"></i>
+                  {{ $t('accountSettings.realNameVerified') }}
                 </a>
               </li>
+              <!-- 我的邀请码 -->
               <li class="nav-item" style="float: right;position: absolute;right: 34px;">
                 <p
                   href="javascript: void(0);"
                   data-toggle="tab"
                   aria-expanded="true"
                   class="user-invide-code nav-link active btn-success waves-effect waves-light"
-                >您的邀请码：{{userInfo.inviteCode}}</p>
+                >{{ $t('accountSettings.yourInvitationCode') + '：' + userInfo.inviteCode}}</p>
               </li>
             </ul>
 
             <div class="tab-content">
+              <!-- 基本信息部分 -->
               <div class="tab-pane active" id="settings" v-if="tabIndex == 0">
                 <form autocomplete="off" @submit.prevent="onSubmit" class="userInfoForm">
+                  <!-- 个人信息部分 -->
                   <h5 class="mb-3 text-uppercase bg-light p-2">
-                    <i class="mdi mdi-account-circle mr-1"></i> 个人信息
+                    <i class="mdi mdi-account-circle mr-1"></i> {{ $t('accountSettings.personalInformation') }}
                   </h5>
-
                   <div class="row">
+                    <!-- 用户名 -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="username">用户名</label>
+                        <label for="username">{{ $t('accountSettings.userName') }}</label>
                         <input
                           type="text"
                           class="form-control"
                           id="username"
-                          placeholder="请输入用户名"
+                          :placeholder="$t('accountSettings.pleaseUserName')"
                           v-model="form.username"
                           :class="usernameClass"
-                          maxlength="6"
+                          maxlength="20"
+                          @click="kankanfrom(form)"
                         />
                         <div
                           class="invalid-feedback"
@@ -261,14 +268,15 @@
                         >{{usernameMsg}}</div>
                       </div>
                     </div>
+                    <!-- 手机号码 -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="phone">电话号码</label>
+                        <label for="phone">{{ $t('accountSettings.phoneNumber') }}</label>
                         <input
                           type="text"
                           class="form-control"
                           id="phone"
-                          placeholder="请输入电话号码"
+                          :placeholder="$t('accountSettings.pleasePhoneNumber')"
                           v-model="form.phone"
                           :class="phoneClass"
                           maxlength="13"
@@ -282,14 +290,15 @@
                     <!-- end col -->
                   </div>
                   <div class="row">
+                    <!-- 邮箱地址 -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="email">邮箱地址</label>
+                        <label for="email">{{ $t('accountSettings.email') }}</label>
                         <input
                           type="text"
                           class="form-control"
                           id="email"
-                          placeholder="请输入邮箱地址"
+                          :placeholder="$t('accountSettings.pleaseEmailAddress')"
                           v-model="form.email"
                           :class="emailClass"
                           maxlength="100"
@@ -300,53 +309,77 @@
                         >{{emailMsg}}</div>
                       </div>
                     </div>
+                    <!-- 密码 -->
                     <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="password">密码</label>
+                      <div class="form-group" style="margin-bottom:0;">
+                        <label for="password">{{ $t('accountSettings.password') }}</label>
                         <input
                           type="password"
                           class="form-control"
                           id="password"
-                          placeholder="请输入密码"
+                          :placeholder="$t('accountSettings.pleasePassword')"
+                          :class="passwordClass"
                           readonly
                           value="12345678"
-                          :class="passwordClass"
                         />
                         <span class="form-text text-muted">
                           <small>
-                            如果您想修改密码请
+                            {{ $t('accountSettings.changePassword') }}
                             <a 
                               class="ship-a"
                               href="javascript: void(0);"
                               @click="openUpdatePassowrdDialog"
-                            >点击</a> 这里.
+                            >{{ $t('accountSettings.clickOn') }}</a> {{ $t('accountSettings.here') }}.
                           </small>
                         </span>
                       </div>
                     </div>
                   </div>
+                  <div class="row">
+                    <!-- 性别 -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="username">{{ $t('accountSettings.gender') }}</label>
+                        <el-select v-model="form.gender" clearable :placeholder="$t('accountSettings.pleaseGender')" style="width:100%">
+                            <el-option
+                                v-for="item in sexSelect"
+                                :key="item.value"
+                                :label="$i18n.locale == 'zh-CN' ? item.labelCn : item.labelEn"
+                                :value="item.value"
+                            >
+                            </el-option>
+                        </el-select>
+                        <div
+                          class="invalid-feedback"
+                          :style="genderMsg != ''  ?'display:block':'display:none'"
+                        >{{genderMsg}}</div>
+                      </div>
+                    </div>
+                  </div>
                   <!-- end row -->
 
+                  <!-- 公司信息部分 -->
                   <h5 class="mb-3 text-uppercase bg-light p-2">
-                    <i class="mdi mdi-office-building mr-1"></i> 公司信息
+                    <i class="mdi mdi-office-building mr-1"></i> {{ $t('accountSettings.companyInformation') }}
                     <span
                       :class="userInfo.validState == 2 ?'form-company-validstated':'form-company-validstate'"
                       v-show="userInfo.validState == 0 || userInfo.validState == 2"
                       @click="changeTab(1)"
                     >
-                      <i v-show="userInfo.validState == 0" class="remixicon-error-warning-line">未认证</i>
-                      <i v-show="userInfo.validState == 2" class="remixicon-vip-crown-2-fill">已认证</i>
+                      <i v-show="userInfo.validState == 0" class="remixicon-error-warning-line">{{ $t('accountSettings.notCertified') }}</i>
+                      <i v-show="userInfo.validState == 2" class="remixicon-vip-crown-2-fill">{{ $t('accountSettings.verified') }}</i>
                     </span>
                   </h5>
                   <div class="row">
+                    <!-- 真实姓名 -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="fullname">真实姓名</label>
+                        <label for="fullname">{{ $t('accountSettings.realName') }}</label>
                         <input
                           type="text"
                           class="form-control"
                           id="fullname"
-                          placeholder="请输入真实姓名"
+                          :placeholder="$t('accountSettings.pleaseRealName')"
                           v-model="form.fullname"
                           :class="fullnameClass"
                           maxlength="10"
@@ -357,14 +390,15 @@
                         >{{fullnameMsg}}</div>
                       </div>
                     </div>
+                    <!-- 公司职位 -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="companyPosition">公司职位</label>
+                        <label for="companyPosition">{{ $t('accountSettings.positionCompany') }}</label>
                         <input
                           type="text"
                           class="form-control"
                           id="companyPosition"
-                          placeholder="请输入公司职位"
+                          :placeholder="$t('accountSettings.pleasePositionCompany')"
                           v-model="form.companyPosition"
                           :class="companyPositionClass"
                           maxlength="20"
@@ -379,14 +413,15 @@
                   </div>
                   <!-- end row -->
                   <div class="row">
+                    <!-- 公司名称 -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="companyName">公司名称</label>
+                        <label for="companyName">{{ $t('accountSettings.companyName') }}</label>
                         <input
                           type="text"
                           class="form-control"
                           id="companyName"
-                          placeholder="请输入公司名称"
+                          :placeholder="$t('accountSettings.pleaseCompanyName')"
                           v-model="form.companyName"
                           :class="companyNameClass"
                           maxlength="20"
@@ -397,14 +432,15 @@
                         >{{companyNameMsg}}</div>
                       </div>
                     </div>
+                    <!-- 办公电话 -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="workPhone">办公电话</label>
+                        <label for="workPhone">{{ $t('accountSettings.officePhone') }}</label>
                         <input
                           type="text"
                           class="form-control"
                           id="workPhone"
-                          placeholder="请输入办公电话"
+                          :placeholder="$t('accountSettings.pleaseOfficePhone')"
                           v-model="form.workPhone"
                           :class="workPhoneClass"
                           maxlength="13"
@@ -419,14 +455,15 @@
                   </div>
                   <!-- end row -->
                   <div class="row">
+                    <!-- 公司网址 -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="companySite">公司网址</label>
+                        <label for="companySite">{{ $t('accountSettings.companyWebsite') }}</label>
                         <input
                           type="text"
                           class="form-control"
                           id="companySite"
-                          placeholder="请输入公司网址"
+                          :placeholder="$t('accountSettings.pleaseCompanyWebsite')"
                           v-model="form.companySite"
                           :class="companySiteClass"
                           maxlength="50"
@@ -437,14 +474,15 @@
                         >{{companySiteMsg}}</div>
                       </div>
                     </div>
+                    <!-- 公司地址 -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="companyAddress">公司地址</label>
+                        <label for="companyAddress">{{ $t('accountSettings.companyAddress') }}</label>
                         <input
                           type="text"
                           class="form-control"
                           id="companyAddress"
-                          placeholder="请输入公司地址"
+                          :placeholder="$t('accountSettings.pleaseCompanyAddress')"
                           v-model="form.companyAddress"
                           :class="companyAddressClass"
                           maxlength="50"
@@ -459,14 +497,15 @@
                   </div>
                   <!-- end row -->
                   <div class="row">
+                    <!-- 业务优势 -->
                     <div class="col-12">
                       <div class="form-group">
-                        <label for="businessGoodAt">业务优势</label>
+                        <label for="businessGoodAt">{{ $t('accountSettings.businessAdvantage') }}</label>
                         <textarea
                           class="form-control"
                           id="businessGoodAt"
                           rows="4"
-                          placeholder="请输入业务优势"
+                          :placeholder="$t('accountSettings.pleaseBusinessAdvantage')"
                           v-model="form.businessGoodAt"
                           :class="businessGoodAtClass"
                           maxlength="100"
@@ -481,14 +520,16 @@
                   </div>
                   <!-- end row -->
 
+                  <!-- 社交信息部分 -->
                   <h5 class="mb-3 text-uppercase bg-light p-2">
-                    <i class="mdi mdi-earth mr-1"></i> 社交信息
+                    <i class="mdi mdi-earth mr-1"></i> 
+                    {{ $t('accountSettings.socialInformation') }}
                   </h5>
-
                   <div class="row">
+                    <!-- QQ -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="qqNumber">QQ</label>
+                        <label for="qqNumber">{{ $t('accountSettings.qq') }}</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text">
@@ -499,7 +540,7 @@
                             type="text"
                             class="form-control"
                             id="qqNumber"
-                            placeholder="请输入QQ号"
+                            :placeholder="$t('accountSettings.pleaseQQ')"
                             v-model="form.qqNumber"
                             :class="qqNumberClass"
                             maxlength="20"
@@ -511,9 +552,10 @@
                         </div>
                       </div>
                     </div>
+                    <!-- 微信 -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="wechatNumber">微信</label>
+                        <label for="wechatNumber">{{ $t('accountSettings.wechat') }}</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text">
@@ -524,7 +566,7 @@
                             type="text"
                             class="form-control"
                             id="wechatNumber"
-                            placeholder="请输入微信号"
+                            :placeholder="$t('accountSettings.pleaseWechat')"
                             v-model="form.wechatNumber"
                             :class="wechatNumberClass"
                             maxlength="20"
@@ -539,11 +581,11 @@
                     <!-- end col -->
                   </div>
                   <!-- end row -->
-
                   <div class="row">
+                    <!-- 微博 -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="sinaNumber">微博</label>
+                        <label for="sinaNumber">{{ $t('accountSettings.weibo') }}</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text">
@@ -554,7 +596,7 @@
                             type="text"
                             class="form-control"
                             id="sinaNumber"
-                            placeholder="请输入微博号"
+                            :placeholder="$t('accountSettings.pleaseWeibo')"
                             v-model="form.sinaNumber"
                             :class="sinaNumberClass"
                             maxlength="20"
@@ -566,6 +608,7 @@
                         </div>
                       </div>
                     </div>
+                    <!-- Skype -->
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="skypeNumber">Skype</label>
@@ -579,7 +622,7 @@
                             type="text"
                             class="form-control"
                             id="skypeNumber"
-                            placeholder="请输入Skype号"
+                            :placeholder="$t('accountSettings.pleaseSkype')"
                             v-model="form.skypeNumber"
                             :class="skypeNumberClass"
                             maxlength="20"
@@ -596,6 +639,7 @@
                   </div>
                   <!-- end row -->
                   <div class="row">
+                    <!-- Facebook -->
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="facebookNumber">Facebook</label>
@@ -609,7 +653,7 @@
                             type="text"
                             class="form-control"
                             id="facebookNumber"
-                            placeholder="请输入Facebook号"
+                            :placeholder="$t('accountSettings.pleaseFacebook')"
                             v-model="form.facebookNumber"
                             :class="facebookNumberClass"
                             maxlength="20"
@@ -621,6 +665,7 @@
                         </div>
                       </div>
                     </div>
+                    <!-- Twitter -->
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="twitterNumber">Twitter</label>
@@ -634,7 +679,7 @@
                             type="text"
                             class="form-control"
                             id="twitterNumber"
-                            placeholder="请输入Twitter号"
+                            :placeholder="$t('accountSettings.pleaseTwitter')"
                             v-model="form.twitterNumber"
                             :class="twitterNumberClass"
                             maxlength="20"
@@ -649,6 +694,7 @@
                     <!-- end col -->
                   </div>
                   <!-- end row -->
+                  <!-- 保存按钮 -->
                   <div class="text-right">
                     <button
                       type="submit"
@@ -656,29 +702,34 @@
                       @click="commitForm"
                       v-loading="loadingModal"
                     >
-                      <i class="mdi mdi-content-save"></i> 保存
+                      <i class="mdi mdi-content-save"></i> 
+                      {{ $t('accountSettings.save') }}
                     </button>
                   </div>
                 </form>
               </div>
+              <!-- 实名认证部分 -->
               <div class="tab-pane active" id="valid" v-if="tabIndex == 1">
                 <div class="col-md-12 card-des">
                   <div class="card">
+                    <!-- 提示语部分 -->
                     <div class="card-body">
-                      <h5 class="card-title">实名认证：您的特权身份证；通过企业实名，您可以额外获得60的会员使用期限</h5>
-                      <p class="card-text">※ 请上传您的名片或工作牌或企业营业执照副本扫描件，我们将在一个工作日以内与您取得联系并完成审核。</p>
-                      <p class="card-text">※ 支持GIF/JPEG/PNG/BMP格式,最大支持4M</p>
+                      <h5 class="card-title">{{ $t('accountSettings.memberPeriod') }}</h5>
+                      <p class="card-text">※ {{ $t('accountSettings.completeReview') }}</p>
+                      <p class="card-text">※ {{ $t('accountSettings.support') }}</p>
                     </div>
+                    <!-- 身份证上传部分 -->
                     <div class="upload-box" @click="openValidModal" v-loading="uploadLoading">
                       <p class="upload-logo h1 text-muted" v-show="userInfo.validUrl ==''">
                         <i class="mdi mdi-cloud-upload"></i>
                       </p>
-                      <h3 v-show="userInfo.validUrl ==''">点击上传图片</h3>
+                      <h3 v-show="userInfo.validUrl ==''">{{ $t('accountSettings.uploadPicture') }}</h3>
                       <img
                         v-show="userInfo.validUrl !=''"
                         class="card-img-bottom img-fluid valid-img"
                         :src="userInfo.validUrl"
-                        alt="实名认证图片"
+                        :alt="$t('accountSettings.realNameVerifiedPicture')"
+                        style="object-fit: contain;height: 100%;width: 100%;"
                       />
                       <viewer style="display:none">
                         <img class="review-picture" :src="userInfo.validUrl" />
@@ -692,6 +743,7 @@
                         ref="inputer"
                       />
                     </div>
+                    <!-- 提交按钮 -->
                     <div class="text-right" v-show="userInfo.validState !=2">
                       <button
                         type="submit"
@@ -701,7 +753,7 @@
                         v-loading="loadingModal"
                       >
                         <i class="remixicon-upload-2-line"></i>
-                        {{userInfo.validState == 1 ? '正在审核':'提交实名认证'}}
+                        {{userInfo.validState == 1 ? $t('accountSettings.underReview') : $t('accountSettings.submit')}}
                       </button>
                     </div>
                   </div>
@@ -718,6 +770,7 @@
       <!-- end row-->
     </div>
     <!-- container -->
+    <!-- 上传图片组件 -->
     <AvatarUpload
       :url="this.GLOBAL.url + 'schedules/web/imgUpload'"
       img-format="jpg"
@@ -731,15 +784,16 @@
       :no-rotate="false"
       :headers="headers"
     ></AvatarUpload>
+    <!-- 更改密码模态框 -->
     <el-dialog
       :visible.sync="updatePassword"
       :close-on-click-modal="false"
       :close-on-press-escape="false"
-      width="384px"
+      width="366px"
       :top="updatePasswordModalTop"
       :before-close="beforeUpdateClose"
     >
-      <UpdatePassword :class="'max-min-height'"></UpdatePassword>
+      <UpdatePassword :class="'max-min-height UpdatePassword'"></UpdatePassword>
     </el-dialog>
   </div>
   <!-- content -->
@@ -749,12 +803,10 @@
 import AvatarUpload from "@components/AvatarUpload";
 import UpdatePassword from "@components/UpdatePassword";
 export default {
-  name: "AccountSetting",
-  page: {
-    title: "账户设置",
-    meta: [{ name: "账户设置", content: `账户设置` }]
+  components: { 
+    AvatarUpload, 
+    UpdatePassword 
   },
-  components: { AvatarUpload, UpdatePassword },
   data() {
     return {
       userInfo: JSON.parse(this.getCookie("currentUser")),
@@ -766,6 +818,8 @@ export default {
       updatePassword: false,
       updateUserMobile:false,
       usernameClass: "form-control",
+      genderClass: 'form-control',
+      genderMsg: '',
       usernameMsg: "",
       phoneClass: "form-control",
       phoneMsg: "",
@@ -802,12 +856,28 @@ export default {
       valid: true,
       isValid: false,
       uploadLoading: false,
-      updatePasswordModalTop: "15vh"
+      updatePasswordModalTop: "15vh",
+      sexSelect:[
+          {
+              value: '0',
+              labelCn: '男',
+              labelEn: 'Male'
+          },
+          {
+              value: '1',
+              labelCn: '女',
+              labelEn: 'Female'
+          },
+      ],
+      touxUrl: '', // 头像更改传得参数
+      simrzUrl: '', //实名认证传得参数
     };
   },
   created() {},
-  computed: {},
   methods: {
+    kankanfrom(from){
+      console.log(from, 'kankanfromkankanfromkankanfrom')
+    },
     //打开修改密码窗口
     openUpdateUserMobileDialog() {
       let { updateUserMobile } = this;
@@ -815,17 +885,18 @@ export default {
     },
     //提交实名认证
     commitRealnameValid() {
-      if(!this.userInfo.validUrl){
-        this.$message({
-          message: "请上传认证图片！",
+      var that = this;
+      if(!that.userInfo.validUrl){
+        that.$message({
+          message: that.$t('messages.certification'),
           type: "warning",
           customClass: "base-message-zindex"
         });
         return false;
       }
-      if (this.userInfo.validState == 1) {
-        this.$message({
-          message: "正在审核阶段，请耐心等待！",
+      if (that.userInfo.validState == 1) {
+        that.$message({
+          message: that.$t('messages.bePatient'),
           type: "warning",
           customClass: "base-message-zindex"
         });
@@ -833,8 +904,8 @@ export default {
       }
       //更新
       this.updateUserInfo({
-        id: this.userInfo.id,
-        validUrl: this.form.validUrl,
+        id: that.userInfo.id,
+        validUrl: that.simrzUrl,
         validState: 1
       });
     },
@@ -852,9 +923,10 @@ export default {
     },
     //点击上传实名认证图片
     openValidModal() {
+      var that = this;
       if (this.userInfo.validState == 1) {
         this.$message({
-          message: "正在审核阶段，请耐心等待！",
+          message: that.$t('messages.bePatient'),
           type: "warning",
           customClass: "base-message-zindex"
         });
@@ -882,7 +954,7 @@ export default {
       //验证文件大小
       if (size > 4 * 1024 * 1024) {
         that.$message({
-          message: "请选择4M以下的图片",
+          message: that.$t('messages.belowFM'),
           type: "warning",
           customClass: "base-message-zindex"
         });
@@ -904,7 +976,7 @@ export default {
         ].indexOf(imgType) == -1
       ) {
         that.$message({
-          message: "图片格式不正确",
+          message: that.$t('messages.isIncorrect'),
           type: "warning",
           customClass: "base-message-zindex"
         });
@@ -934,15 +1006,18 @@ export default {
       }).then(
         // 上传成功
         function(resData) {
+          console.log(resData,'resData')
+          console.log(that.GLOBAL.basic_icon + resData.content,'that.GLOBAL.basic_icon + resData.content')
           that.uploadLoading = false;
-          that.userInfo.validUrl = "http://" + resData.content;
-          that.form.validUrl = "http://" + resData.content;
+          that.userInfo.validUrl = that.GLOBAL.basic_icon + resData.content;
+          that.form.validUrl = that.GLOBAL.basic_icon + resData.content;
+          that.simrzUrl = resData.content
         },
         // 上传失败
         function(sts) {
           that.uploadLoading = false;
           that.$message({
-            message: "上传失败",
+            message: that.$t('messages.uploadFailed'),
             type: "error",
             customClass: "base-message-zindex"
           });
@@ -951,13 +1026,14 @@ export default {
     },
     cropSuccess(data, field, key) {},
     cropUploadSuccess(data, field, key) {
-      this.userInfo.avatarUrl = "http://" + data.content;
-      this.$parent.$refs.head.avatarUrl = "http://" + data.content;
-      this.form.avatarUrl = "http://" + data.content;
+      this.userInfo.avatarUrl = this.GLOBAL.basic_icon + data.content;
+      this.$parent.$refs.head.avatarUrl = this.GLOBAL.basic_icon + data.content;
+      this.form.avatarUrl = this.GLOBAL.basic_icon + data.content;
+      this.touxUrl = data.content
       //更新
       this.updateUserInfo({
         id: this.userInfo.id,
-        avatarUrl: this.form.avatarUrl
+        avatarUrl: this.touxUrl
       });
     },
     cropUploadFail(status, field, key) {},
@@ -989,6 +1065,7 @@ export default {
     //提交表单
     commitForm() {
       if (this.validForm(this.form)) {
+        
         this.updateUserInfo(this.form);
       }
     },
@@ -996,7 +1073,7 @@ export default {
     resetForm() {},
     updateUserInfo(data) {
       var that = this;
-      this.loadingModal = true;
+      this.loadingModal = true
       $.ajax({
         url: that.GLOBAL.url + "schedules/web/updateUserInfo",
         type: "POST",
@@ -1007,7 +1084,7 @@ export default {
         success: function(data) {
           if (data.status == 1) {
             that.$message({
-              message: "保存成功",
+              message: that.$t('messages.savedSuccessfully'),
               type: "success",
               customClass: "base-message-zindex"
             });
@@ -1017,7 +1094,7 @@ export default {
             });
           } else {
             that.$message({
-              message: "保存失败",
+              message: that.$t('messages.saveFailed'),
               type: "error",
               customClass: "base-message-zindex"
             });
@@ -1025,11 +1102,6 @@ export default {
           that.loadingModal = false;
         },
         error: function(e) {
-          that.$message({
-            message: "服务器异常",
-            type: "error",
-            customClass: "base-message-zindex"
-          });
           that.loadingModal = false;
         }
       });
@@ -1042,17 +1114,32 @@ export default {
         this.usernameMsg = "";
         this.usernameClass = "form-control valid";
       }
+      // if(!this.validate.isNull(form.gender)){
+      //    if (!this.validate.isPhone(form.gender)) {
+      //     this.genderMsg = "请输入性别";
+      //     this.genderClass = "form-control invalid";
+      //     this.valid = false;
+      //     return false;
+      //   } else {
+      //     this.genderMsg = "";
+      //     this.genderClass = "form-control valid";
+      //   }
+      // }
       //电话号码
-      if (!this.validate.isNull(form.phone)) {
-        if (!this.validate.isPhone(form.phone)) {
-          this.phoneMsg = "请输入正确的手机号";
-          this.phoneClass = "form-control invalid";
-          this.valid = false;
-          return false;
-        } else {
-          this.phoneMsg = "";
-          this.phoneClass = "form-control valid";
-        }
+      // if (!this.validate.isNull(form.userMobile)) {
+      //   if (!this.validate.isPhone(form.userMobile)) {
+      //     this.phoneMsg = "请输入正确的手机号";
+      //     this.phoneClass = "form-control invalid";
+      //     this.valid = false;
+      //     return false;
+      //   } else {
+      //     this.phoneMsg = "";
+      //     this.phoneClass = "form-control valid";
+      //   }
+      // }
+      if (!this.validate.isNull(form.userMobile)){
+        this.phoneMsg = "";
+        this.phoneClass = "form-control valid";
       }
       //邮箱
       if (!this.validate.isNull(form.email)) {
@@ -1148,7 +1235,25 @@ export default {
       return this.valid;
     }
   },
-  watch: {},
+  computed: {
+    language(){
+      return localStorage.getItem('language');
+    }
+  },
+  watch: {
+    language : {
+      immediate: true,
+      handler(newVal){
+        if(newVal == '语言'){
+          this.lang = "zh-CN";
+          this.$i18n.locale = this.lang; //关键语句
+        }else if(newVal == 'language'){
+          this.lang = "en-US";
+          this.$i18n.locale = this.lang; //关键语句
+        }
+      }
+    },
+  },
   mounted() {
     //浏览器窗口大小兼容处理
     var that = this;

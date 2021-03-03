@@ -1,0 +1,69 @@
+{
+  "status": 1,
+  "content": [
+    {
+      "carrierName": "SKR",
+      "routeCode": "CKX1",
+      "pol": "Waigaoqiao Gangqu",
+      "polCode": "CNSHA",
+      "pod": "ULSAN",
+      "podCode": "KRUSN",
+      "etd": "2020-01-01 14:11:32",
+      "eta": "2020-01-05 15:32:10",
+      "ships": [
+        {
+          "shipId": 564913000,
+          "shipName": "TOKYO TRADER",
+          "mmsi": "564913000",
+          "ports": [
+            {
+              "portName": "SHANGHAI",
+              "portNameCn": "上海",
+              "portCode": "CNSHA",
+              "eta": "2020-01-01 11:55:15",
+              "etd": "2020-01-01 14:11:32",
+              "lastEta": "2020-01-01 11:55:15",
+              "lastEtd": "2020-01-01 14:11:32",
+              "lat": 31.366365,
+              "lon": 121.61475
+            },
+            {
+              "portName": "NINGBO",
+              "portNameCn": "宁波",
+              "portCode": "CNNGB",
+              "eta": "2020-01-03 06:32:23",
+              "etd": "2020-01-03 14:32:22",
+              "lastEta": "2020-01-03 06:32:23",
+              "lastEtd": "2020-01-03 14:32:22",
+              "lat": 29.926545,
+              "lon": 121.8525
+            },
+            {
+              "portName": "BUSAN",
+              "portNameCn": "釜山",
+              "portCode": "KRPUS",
+              "eta": "2020-01-06 08:08:29",
+              "etd": "2020-01-06 11:44:30",
+              "lastEta": "2020-01-06 08:08:29",
+              "lastEtd": "2020-01-06 11:44:30",
+              "lat": 35.10162,
+              "lon": 129.03605
+            },
+            {
+              "portName": "ULSAN",
+              "portNameCn": "蔚山",
+              "portCode": "KRUSN",
+              "eta": "2020-01-06 15:32:10",
+              "etd": "2020-01-06 20:26:49",
+              "lastEta": "2020-01-06 15:32:10",
+              "lastEtd": "2020-01-06 20:26:49",
+              "lat": 35.511065,
+              "lon": 129.38275
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "message": "SUCCESS"
+}

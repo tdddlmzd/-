@@ -6,74 +6,118 @@
 .card {
   border: none !important;
 }
-.download-template .mt-3,
-.download-template .card-body {
-  padding-bottom: 0;
-}
-.el-dialog__body {
-  padding: 4px 20px 0 20px !important;
-}
-.download-template .card-body {
-  padding: 0 1.5rem !important;
-}
-.card {
-  margin-bottom: 0 !important;
-}
 .valid {
   border-color: #1abc9c !important;
   padding-right: calc(1.5em + 0.9rem) !important;
-  // background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8… 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e);
-  background-repeat: no-repeat !important;
-  background-position: center right calc(0.375em + 0.1875rem) !important;
-  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) !important;
 }
 .invalid {
   border-color: #f1556c !important;
   padding-right: calc(1.5em + 0.9rem) !important;
-  // background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23f1556…%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E);
-  background-repeat: no-repeat !important;
-  background-position: center right calc(0.375em + 0.1875rem) !important;
-  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) !important;
 }
+.el-dialog__headerbtn .el-dialog__close{
+  margin-top: 4px;
+  font-size: 18px;
+}
+.el-dialog__headerbtn .el-dialog__close:hover{
+  color: #909399;
+}
+.download-template .card-body{
+  padding: 36px 2px 0;
+}
+.changePassword{
+  font-size: 20px;
+  color: #282828;
+  line-height: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.changePassword_p{
+  font-size: 14px;
+  color: #282828;
+  line-height: 14px;
+  margin-bottom: 36px !important;
+}
+.download-template .btn-block{
+  width: 280px !important;
+  height: 44px !important;
+  background-color: #072c4c !important;
+  border: none !important;
+  border-radius: 22px !important;
+  color: #fff;
+  font-size: 14px !important;
+}
+.download-template .btn-block:hover{
+  background-color: #395670 !important;
+}
+.download-template .form-group{
+  margin-bottom: 16px !important;
+}
+.download-template #button-group{
+  margin-top: 40px !important;
+}
+.download-template .form-group input{
+  height: 44px !important;
+  border-radius: 4px !important;
+  border: 1px solid #dcdfe6 !important;
+  color: #282828 !important;
+}
+.download-template .form-group input:hover{
+  border-color: #c0c4cc !important;
+}
+.download-template .form-group input:focus{
+  border-color: #409eff !important;
+}
+.download-template .form-group input::-webkit-input-placeholder{
+    color:#909090;
+}
+.download-template .form-group input::-moz-placeholder{
+    color:#909090;
+}
+.download-template .form-group input:-moz-placeholder{
+    color:#909090;
+}
+.download-template .form-group input:-ms-input-placeholder{
+    color:#909090;
+}
+#button-group .download-template .btn-primary{
+  color: #fff;
+  background: #072c4c !important;
+  border: 1px solid #072c4c !important;
+}
+#button-group .download-template .btn-primary:hover{
+  color: #fff;
+  background: #072c4c !important;
+  border: 1px solid #072c4c !important;
+}
+
 </style>
 <template>
+<!-- 账号设置页面——更改密码组件 -->
   <Layout>
     <div class="download-template row justify-content-center">
       <div style="width:100%;">
         <div class="card">
           <div class="card-body">
-            <div class="text-center m-auto">
-              <a href="/">
-                <span>
-                  <img class="logo-img" src="@assets/images/logo220190929.png" alt height="22" />
-                </span>
-              </a>
-              <p class="text-muted mb-4 mt-3" style="margin-bottom: 15px !important;">验证您的原密码来修改密码</p>
+            <div class="card_title">
+              <div class="changePassword">{{$t('changePassword.ChangePassword')}}</div>
+              <p class="changePassword_p">{{$t('changePassword.changePassword')}}</p>
             </div>
 
-            <b-alert v-model="isResetError" variant="danger" dismissible>{{error}}</b-alert>
-
-            <b-alert v-model="isSuccess" variant="success" dismissible>{{successMessage}}</b-alert>
-
             <form
-              style="margin-top:50px;margin-bottom:30px;"
               @submit.prevent="tryToUpdatePassword"
               action="return false"
               class="forgetPasswordform parsley-form needs-validation"
               novalidate
               v-loading="loading"
             >
+              <!-- 原密码输入框 -->
               <div class="form-group">
-                <label for="oldPassword">
-                  原密码
-                  <span style="color:red">*</span>
-                </label>
                 <div class="input-group">
                   <input
                     type="password"
                     required
                     id="oldPassword"
-                    placeholder="请输入原密码"
+                    :placeholder="$t('changePassword.pleaseOriginalPassword')"
                     v-model="oldPassword"
                     maxlength="16"
                     minlength="6"
@@ -85,17 +129,13 @@
                   :style="oldPasswordMsg != '' ?'display:block':'display:none'"
                 >{{oldPasswordMsg}}</div>
               </div>
-
+              <!-- 新密码输入框 -->
               <div class="form-group">
-                <label for="password">
-                  密码
-                  <span style="color:red">*</span>
-                </label>
                 <input
                   type="password"
                   required
                   id="password"
-                  placeholder="请输入密码"
+                  :placeholder="$t('changePassword.pleasePassword')"
                   v-model="password"
                   maxlength="16"
                   minlength="6"
@@ -106,17 +146,13 @@
                   :style="passwordMsg != '' ?'display:block':'display:none'"
                 >{{passwordMsg}}</div>
               </div>
-
+              <!-- 确认新密码输入框 -->
               <div class="form-group">
-                <label for="repassword">
-                  确认密码
-                  <span style="color:red">*</span>
-                </label>
                 <input
                   type="password"
                   required
                   id="repassword"
-                  placeholder="请确认密码"
+                  :placeholder="$t('changePassword.pleaseConfirmPassword')"
                   v-model="repassword"
                   maxlength="16"
                   minlength="6"
@@ -127,7 +163,7 @@
                   :style="repasswordMsg != '' ?'display:block':'display:none'"
                 >{{repasswordMsg}}</div>
               </div>
-
+              <!-- 保存按钮 -->
               <b-form-group id="button-group" class="mt-4">
                 <b-button
                   type="submit"
@@ -135,7 +171,7 @@
                   style
                   class="btn-block"
                   @click="updatePassword"
-                >保存</b-button>
+                >{{$t('changePassword.save')}}</b-button>
               </b-form-group>
             </form>
           </div>
@@ -179,98 +215,68 @@ export default {
       loading: false,
       isValid: false,
       isResetError: false,
-      isSuccess: false,
-      error: "",
-      successMessage: ""
+      isSuccess: false
     };
   },
   computed: {},
   methods: {
     ...authMethods,
-    // Try to register the user in with the email, fullname
-    // and password they provided.
     tryToUpdatePassword() {
-      // this.tryingToReset = true
-      // // Reset the authError if it existed.
-      // this.error = null
-      // return this.resetPassword({
-      //   email: this.email
-      // })
-      //   .then((data) => {
-      //     this.tryingToReset = false
-      //     this.isResetError = false
-      //     this.isSuccess = true
-      //     this.successMessage = data.message
-      //   })
-      //   .catch((error) => {
-      //     this.tryingToReset = false
-      //     this.error = error? error.response.data.message: ""
-      //     this.isResetError = true
-      //     this.isSuccess = false
-      //   })
     },
     //重置密码
     updatePassword() {
-      var that = this;
-      var params = {
-        userMobile: that.getCookie("userMobile"),
-        oldPassword: that.CryptoJS.MD5(
-          that.oldPassword + that.GLOBAL.salt
-        ).toString(),
-        // password:that.CryptoJS.SHA256(that.password + that.GLOBAL.salt).toString(),
-        password: that.CryptoJS.MD5(that.password + that.GLOBAL.salt).toString()
-      };
+      var that = this
       if (this.validForm({
-        oldPassword: that.oldPassword,
-        password: that.password,
-        repassword: that.repassword
+          oldPassword: that.oldPassword,
+          password: that.password,
+          repassword: that.repassword
       })) {
-        this.loading = true;
-        $.ajax({
-          url: that.GLOBAL.url + "schedules/web/updatePassword",
-          type: "POST",
+        this.loading = true
+        var fd = new FormData()
+        fd.append('userMobile', that.getCookie("userMobile"))
+        fd.append('oldPassword', that.oldPassword)
+        fd.append('password', that.password)
+        that.$Axios.post(that.GLOBAL.url + "schedules/web/updatePassword",fd,{
           headers: {
-            Authorization: that.getToken()
-          },
-          data: params,
-          success: function(data) {
-            if (data.status == 1) {
-              that.$message({
-                message: "修改成功",
-                type: "success",
-                customClass:'base-message-zindex'
-              });
-              //改变head绑定的值
-              setTimeout(function() {
-                that.resetForm();
-                $(document)
-                  .find(".el-dialog__headerbtn")
-                  .trigger("click");
-              }, 1000);
-            } else if(data.status == 3){
-              that.$message({
-                message: "原密码不正确",
-                type: "warning",
-                customClass:'base-message-zindex'
-              });
-            }else {
-              that.$message({
-                message: "修改失败",
-                type: "error",
-                customClass: "base-message-zindex"
-              });
-            }
-            that.loading = false;
-          },
-          error: function(e) {
+              Authorization: that.getToken(),
+        },
+        }).then(res => {
+          if (res.data.status == 1) {
             that.$message({
-              message: "服务器异常",
+              message: that.$t('messages.successfullyModified'),
+              type: "success",
+              customClass:'base-message-zindex'
+            });
+            //改变head绑定的值
+            setTimeout(function() {
+              that.resetForm();
+              $(document)
+                .find(".el-dialog__headerbtn")
+                .trigger("click");
+            }, 1000);
+          } else if(res.data.status == 3){
+            that.$message({
+              message: that.$t('messages.passwordIncorrect'),
+              type: "warning",
+              customClass:'base-message-zindex'
+            });
+          }else {
+            that.$message({
+              message: that.$t('messages.failEdit'),
               type: "error",
               customClass: "base-message-zindex"
             });
-            that.loading = false;
           }
-        });
+          that.loading = false;
+        }).catch((err)=>{
+            that.$message({
+              message: that.$t('messages.erverException'),
+              type: "error",
+              customClass: "base-message-zindex"
+            });
+            that.loading = false
+            
+        })
       }
     },
     //重置表单
@@ -290,8 +296,6 @@ export default {
       this.loading = false;
       this.isResetError = false;
       this.isSuccess = false;
-      this.error = "";
-      this.successMessage = "";
       this.isValid = false;
     },
     //表单验证

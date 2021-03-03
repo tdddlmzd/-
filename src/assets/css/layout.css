@@ -1,0 +1,116 @@
+/* @media  screen and(max-width: 1024px)  {
+
+} */
+
+
+/* @media screen and (min-width: 1200px) and (max-width: 1365px) {
+
+} */
+
+
+/* @media screen and(min-width: 1366px) and (max-width: 1679px) {
+
+} */
+
+@media screen and (min-width: 1500px) {
+    /* 全局样式 */
+    .wrapper {
+        /* width: 1200px !important; */
+    }
+    /* 船期 */
+    .list-content {
+        /* width: 981px; */
+    }
+    .task-content {
+        width: 1038px;
+    }
+    .from-box .ipt-box {
+        /* width: 285px !important; */
+    }
+    .list-main .wrapper .header-list .search {
+        width: 20% !important;
+    }
+    .mainIformion .mainIformion-li .item-6 {
+        width: 100% !important;
+    }
+    .mainIformion .mainIformion-li .item-6 .centerCon {
+        width: 750px !important;
+    }
+    .list-main .wrapper .seaship ul li.startVess {
+        width: 295px;
+    }
+    /* 数据服务 */
+    .datamain {
+        height: 407px !important;
+        ;
+    }
+    .datamain .flexmain {
+        width: 1200px !important;
+    }
+    .datamain .datamm li {
+        width: 368px !important;
+    }
+    .datamain .datamm .backgro {
+        width: 368px !important;
+        height: 168px !important;
+    }
+    .datamain .xhgz .dtsxh {
+        height: 290px !important;
+    }
+    .datamain .xhgz {
+        height: 412px !important;
+    }
+    .hxcq {
+        background-image: url('../images/datainfor/hxcq.png') !important;
+    }
+    .cbcq {
+        background-image: url('../images/datainfor/cbcq.png') !important;
+    }
+    .lszdl {
+        background-image: url('../images/datainfor/lszdl.png') !important;
+    }
+    .macbji {
+        background-image: url('../images/datainfor/macbji.png') !important;
+    }
+    .mtxhgz {
+        background-image: url('../images/datainfor/mtxhgz.png') !important;
+    }
+    .cgsxhgz {
+        background-image: url('../images/datainfor/cgsxhgz.png') !important;
+    }
+}
+
+@media screen and (max-width: 1499px) {
+    /* 船期 */
+    .list-content {
+        /* width: 981px; */
+    }
+    .task-content {
+        width: 1038px;
+    }
+    .footerBtn .el-button {
+        width: 450px !important;
+    }
+    .collapse .el-collapse-item {
+        padding: 0 26px !important;
+    }
+    .el-col-2 {
+        width: 8.6% !important;
+    }
+    .contact_us {
+        width: 1100px !important;
+        height: 415px !important;
+    }
+    .contact_us img {
+        width: 659px !important;
+    }
+    .contact_us .contact_us_info {
+        height: 330px !important;
+        padding-top: 52px !important;
+        padding-left: 60px !important;
+    }
+    /* 登录框 */
+    .download-template .dropdown-menu-right {
+        right: 3% !important
+    }
+}

@@ -1,16 +1,16 @@
 <style>
 .my-list-details {
   position: relative;
-  top: 50px;
+  top: 57px;
 }
 </style>
 <template>
   <div id="details">
     <Head ref="head"></Head>
     <div class="my-list-details">
-    <HeadLocationNav ref="searchBar"></HeadLocationNav>
+    <!-- <HeadLocationNav ref="searchBar"></HeadLocationNav> -->
     <DetailsMode ref="DetailsMode"></DetailsMode>
-    <Declare></Declare>
+    <!-- <Declare></Declare> -->
     <div>
       <Footer></Footer>
     </div>
@@ -25,7 +25,9 @@ import Footer from "@components/Footer";
 import Declare from "@components/Declare";
 import DetailsMode from "@components/DetailsMode";
 export default {
-  name: "Details",
+  page: {
+      title: '船期',
+  },
   components: {DetailsMode,Head,HeadLocationNav,Footer,Declare},
   data() {
     return {};
@@ -40,7 +42,7 @@ export default {
     
   },
   mounted() {
-    this.$refs.searchBar.init(this.$route.params)
+    // this.$refs.searchBar.init(this.$route.params)
   }
 };
 </script>

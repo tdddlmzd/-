@@ -17,5 +17,6 @@ module.exports = {
       }
     ]
   ],
+  // sourceType: 'unambiguous',
   plugins: plugins
 };

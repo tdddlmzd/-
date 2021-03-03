@@ -1,0 +1,53 @@
+{
+  "status": 1,
+  "content": [
+      {
+          "carrierName": "APL",
+          "routeCode": "FAL2",
+          "pol": "DALIAN",
+          "polCode": "CNDLC",
+          "pod": "ROTTERDAM",
+          "podCode": "NLRTM",
+          "etd": "2020-04-15 00:00:00",
+          "eta": "2020-05-19 00:00:00",
+          "ships": [
+              {
+                  "shipId": 477194400,
+                  "shipName": "COSCO SHIPPING NEBULA",
+                  "mmsi": "477194400",
+                  "etd": "2020-04-15 00:00:00",
+                  "eta": "2020-05-19 00:00:00",
+                  "ports": [
+                      {
+                          "portName": "DALIAN",
+                          "portNameCn": "大连",
+                          "portCode": "CNDLC",
+                          "terminal": "大连",
+                          "duration": 37,
+                          "eta": "2020-05-19 00:00:00",
+                          "etd": "2020-04-15 00:00:00",
+                          "lastEta": "",
+                          "lastEtd": "",
+                          "lat": 38.948195,
+                          "lon": 121.681133
+                      },
+                      {
+                          "portName": "ROTTERDAM",
+                          "portNameCn": "鹿特丹",
+                          "portCode": "NLRTM",
+                          "terminal": "",
+                          "duration": 30,
+                          "eta": "2020-05-19 00:00:00",
+                          "etd": "2020-04-15 00:00:00",
+                          "lastEta": "",
+                          "lastEtd": "",
+                          "lat": 51.943305,
+                          "lon": 4.141812
+                      }
+                  ]
+              }
+          ]
+      }
+  ],
+  "message": "SUCCESS"
+}

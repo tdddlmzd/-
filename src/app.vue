@@ -85,9 +85,12 @@ ul {
 a {
   text-decoration: none;
 }
-* ::-webkit-scrollbar {
-  display: none;
-}
+// * ::-webkit-scrollbar {
+//   display: none;
+// }
+// .container::-webkit-scrollbar {
+//   display: none;
+// }
 // Safari不兼容也不知道这段css是干啥的
 // #app :not(.left-bar.side-box) {
 //   -webkit-font-smoothing: antialiased;
@@ -126,6 +129,7 @@ a {
 @import "assets/css/index.css";
 @import "assets/css/list.css";
 @import "assets/css/details.css";
+@import "assets/css/layout.css";
 //下载模板的css
 @import "assets/css/app.scss";
 @import "assets/css/icons.css";
@@ -140,6 +144,9 @@ a {
     overflow: auto;
   }
 }
+.el-dialog__body::-webkit-scrollbar{
+  display: none !important;
+}
 .login-modal-front {
   z-index: 9999 !important;
   transition: all 0.5s;
@@ -147,7 +154,7 @@ a {
   transform-style: preserve-3d;
   .el-dialog__body {
     height: 547.97px;
-    overflow: auto;
+    // overflow: auto;
   }
 }
 .login-modal-back {
@@ -181,7 +188,7 @@ a {
   transition: all 0.5s;
   .el-dialog__body {
     height: 547.97px;
-    overflow: auto;
+    // overflow: auto;
   }
 }
 .regist-modal-back {
@@ -204,6 +211,11 @@ a {
 }
 .el-dialog__headerbtn {
   top: 15px !important;
+  z-index: 2;
+}
+body{
+  // overflow: hidden;
+  font-family: 'SourceHanSansCN' !important;
 }
 </style>
 
@@ -300,42 +312,7 @@ export default {
       done();
     },
     //切换到忘记密码
-    goForgetPssword() {},
-    // 校验token，不成功就重新获取
-    tokenValidor() {
-      var that = this;
-      var isError = false;
-      $.ajax({
-        url: that.GLOBAL.url + "auth/user?token=" + that.getToken(),
-        type: "GET",
-        async: false,
-        success: function(data) {
-          if (data.status != 1) {
-          }
-        },
-        error: function() {
-          isError = true;
-        }
-      });
-      if (isError) {
-        var authorization = "";
-        $.ajax({
-          url:
-            that.GLOBAL.url +
-            "auth/token?username=webCustomer&password=" +
-            that.CryptoJS.SHA256("123456" + that.GLOBAL.salt).toString(),
-          type: "GET",
-          success: function(data) {
-            if (data.status == 1 && data.message == "SUCCESS") {
-              authorization = "Bearer " + data.content;
-              //保存6小时
-              that.setCookie("gateway_token", authorization, 0.25);
-              window.location.reload();
-            }
-          }
-        });
-      }
-    }
+    goForgetPssword() {}
   },
   created() {},
   mounted() {
@@ -345,28 +322,74 @@ export default {
       that.modalHight = (window.innerHeight - 547.97) / 2 + "px";
     });
     $(window).resize();
-
     // 百度统计
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?31c465cda5ec66376a11ef41ec6a4235";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-
+    // var _hmt = _hmt || [];
+    // (function() {
+    //   var hm = document.createElement("script");
+    //   hm.src = "https://hm.baidu.com/hm.js?31c465cda5ec66376a11ef41ec6a4235";
+    //   var s = document.getElementsByTagName("script")[0];
+    //   s.parentNode.insertBefore(hm, s);
+    // })();
+    if(this.$route.name == 'Home'){
+      let _body = document.getElementsByTagName('body')
+      _body[0].style.overflow = "hidden";
+    };
     $.ajaxSetup({
-      complete: function(xhr, status) {
-        // 如果不是验证token 的请求出错
-        if (status == "error") {
-          if (this.url.indexOf("auth/user") == -1) {
-            // 验证token
-            that.tokenValidor();
+      beforeSend: function(xhr){
+        xhr.setRequestHeader("Cache-Control", "no-cache, no-store, max-age=0, must-revalidate")
+      },
+      complete: function(xhr,status){
+          if(xhr.status == 401 || xhr.status == 403){
+            that.delCookie("currentUser"); //删除用户信息
+            that.delCookie("authId"); // 删除用户id
+            that.delCookie("userMobile"); //删除用户名
+            that.delCookie("password"); // 删除 密码
+            that.delCookie("gateway_token"); // 删除 token
+            localStorage.removeItem('userMobile'); // 删除用户登录的用户名/手机号
+            localStorage.removeItem('language'); // 删除存储的语言
+            localStorage.removeItem('detailList')
+            localStorage.removeItem("updateUserName");
+            localStorage.removeItem("currentUser"); //删除登录用户信息
+            localStorage.removeItem("authId"); //删除登录用户信息
+            localStorage.removeItem('weChat')
+            localStorage.removeItem('vessel_token')
+            localStorage.removeItem('truck_token')
+          }
+          if(that.$route.name == 'Truck' || that.$route.name == 'vesselifream'){ //代表此处是 ifream表单
+            if(xhr.status == 401 || xhr.status == 403){
+                
+            }
+          }else{
+            if(xhr.status == 401){
+              that.$router.push({
+                path: '/Login'
+              })
+            }
+            if(xhr.status == 403){
+              console.log(xhr.status,'chuanbye')
+              // 退出登录使用默认token
+              that.getToken()
+              // $(".userinfo-link").css("background-color", "inherit");
+              $(".dropdown-menu.dropdown-menu-right.profile-dropdown").css(
+                "display",
+                "none"
+              );
+              that.$router.push({
+                path: '/Login'
+              })
+            }
+            if(xhr.status == 429){
+              that.$message({
+                message: "您的操作过于频繁，请稍后再试",
+                type: "warning",
+                customClass: "base-message-zindex"
+              });
+              that.loading.closeAll(that)
+            }
           }
         }
-      }
-    });
-  }
+    })
+  },
 };
 </script>
 

@@ -1,4 +1,5 @@
 <template>
+<!-- 账号设置页面——图片上传组件 -->
 <div class="vue-image-crop-upload" v-show="value">
 	<div class="vicp-wrap">
 		<div class="vicp-close" @click="off">

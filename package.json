@@ -51,7 +51,7 @@
     "leaflet": "^1.6.0",
     "leaflet-polylinedecorator": "^1.6.0",
     "leaflet.motion": "^0.1.5",
-    "lodash": "4.17.11",
+    "lodash": "4.17.21",
     "metismenujs": "^1.0.3",
     "node-notifier": "^6.0.0",
     "node-sass": "^4.13.1",

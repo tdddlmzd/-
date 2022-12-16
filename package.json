@@ -92,7 +92,7 @@
     "electron": "9.0.5",
     "electron-packager": "^15.2.0",
     "es6-promise": "^4.2.8",
-    "express": "4.16.x",
+    "express": "4.17.x",
     "gulp": "^4.0.2",
     "hygen": "2.1.2",
     "image-webpack-loader": "^5.0.0",
